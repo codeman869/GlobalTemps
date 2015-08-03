@@ -2325,7 +2325,7 @@ var glob = d3.svg.line().interpolate("basis").x(function(d){
 	
 }).y(function(d){
 	
-	return yScale(d.Glob);
+	return yScale(d.Glob)+padding;
 	
 });
 
