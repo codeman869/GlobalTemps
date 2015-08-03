@@ -81,6 +81,12 @@ div.legend {
 				pointer-event:none;
 }
 
+.y-axis-label {
+    
+    text-anchor:left;
+    
+}
+
 .global-stroke {
     
     stroke: #1b9e77;
