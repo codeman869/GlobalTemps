@@ -2318,9 +2318,9 @@ svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+"
 
 //Axis Labeling
 svg.append("text").attr("x",width-padding).attr("y",(height+padding)/2).attr("class","x-axis-label")
-			.text("Dates");
+			.text("Years");
 svg.append("text").attr("x",padding).attr("y",height).attr("class","x-axis-label y-axis-label")
-			.text("Temperature Deviations");
+			.text("Temperature Deviations in 0.01 degrees C");
 
 //hovering Line
 var hoverLine = d3.svg.line();
