@@ -2309,7 +2309,7 @@ svg.attr("height",height+2*padding).attr("width",width+2*padding);
 
 //add x and y axis
 svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+(height-2*padding)/2+")").call(xAxis);
-svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+","+-1 * padding+")").call(yAxis);
+svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+",0)").call(yAxis);
 
 //helper functions
 
@@ -2325,7 +2325,7 @@ var glob = d3.svg.line().interpolate("basis").x(function(d){
 	
 }).y(function(d){
 	
-	return yScale(d.Glob)-padding;
+	return yScale(d.Glob);
 	
 });
 
