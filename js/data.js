@@ -2296,7 +2296,7 @@ var data = [{
     
     
 //initial variables
-var width = 1500, height = 900, padding = 20, dX=20, dY=20;
+var width = 1500, height = 900, padding = 20, dX=30, dY=30;
 var xScale = d3.time.scale().domain([new Date("1880"),new Date("2014")]).range([0,width-padding* 2]);
 var yScale = d3.scale.linear().domain([100,-100]).range([0,height-padding * 2]);
 var xAxis = d3.svg.axis().scale(xScale);
