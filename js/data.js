@@ -2398,11 +2398,11 @@ d3.select(".legend").style("left", width - 100 - padding + "px")
 				.style("top", height - 150 - padding + "px");
 	
 			d3.select("#glob").text("Global Temperature")
-				.style("color", "green");
+				.attr("class", "global-text");
 			d3.select("#nhem").text("Northern Hemisphere")
-				.style("color", "red");
+				.attr("class", "northern-text");
 			d3.select("#shem").text("Southern Hemisphere")
-				.style("color", "blue");
+				.attr("class", "southern-text");
 
 
 d3.select("#tooltip").classed("hidden",false);

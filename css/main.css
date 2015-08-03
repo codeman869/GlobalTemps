@@ -89,6 +89,11 @@ div.legend {
     
 }
 
+.global-text {
+    color: #1b9e77;
+    
+}
+
 .northern-stroke {
     stroke: #d95f02;
     fill: none;
@@ -96,9 +101,18 @@ div.legend {
     
 }
 
+.northern-text {
+    color: #d95f02;
+    
+}
 .southern-stroke {
     stroke: #7570b3;
     fill: none;
     stroke-width: 2;
+    
+}
+
+.southern-text {
+    color: #7570b3;
     
 }
