@@ -2317,7 +2317,7 @@ svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+(
 svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+",0)").call(yAxis);
 
 //Axis Labeling
-svg.append("text").attr("x",width-padding).attr("y",(height-2*padding)/2).attr("class","x-axis-label")
+svg.append("text").attr("x",width-padding).attr("y",(height+padding)/2).attr("class","x-axis-label")
 			.text("Dates");
 
 
