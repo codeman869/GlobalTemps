@@ -2364,7 +2364,7 @@ svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black")
 svg.on("mousemove",function(){
 	
 	var xPos = d3.mouse(this)[0];
-	
+	console.log(xScale.invert(xPos));
 	d3.select("#vertLine").attr("transform",function(){
 		
 		return "translate(" + xPos + ",0)";
@@ -2385,5 +2385,7 @@ d3.select(".legend").style("left", width - 100 - padding + "px")
 			d3.select("#shem").text("Southern Hemisphere")
 				.style("color", "blue");
 
+
+d3.select("#tooltip").classed("hidden",false);
 
 
