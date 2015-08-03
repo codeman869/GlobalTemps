@@ -2364,7 +2364,7 @@ svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black")
 svg.on("mousemove",function(){
 	
 	var xPos = d3.mouse(this)[0];
-	console.log(xScale.invert(xPos));
+	console.log(xScale.invert(xPos).getFullYear());
 	d3.select("#vertLine").attr("transform",function(){
 		
 		return "translate(" + xPos + ",0)";
