@@ -91,6 +91,8 @@ div.legend {
 
 .global-text {
     color: #1b9e77;
+    font-family: sans-serif;
+    font-size: 14px;
     
 }
 
@@ -103,6 +105,8 @@ div.legend {
 
 .northern-text {
     color: #d95f02;
+    font-family: sans-serif;
+    font-size: 14px;
     
 }
 .southern-stroke {
@@ -114,5 +118,8 @@ div.legend {
 
 .southern-text {
     color: #7570b3;
+    font-family: sans-serif;
+    font-size: 14px;
+    
     
 }
