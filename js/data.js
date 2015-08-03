@@ -2366,6 +2366,7 @@ svg.on("mousemove",function(){
 	if (lookupValue >=0 && lookupValue <= 134) {
 	    
 	    console.log(lookupValue);
+	    d3.select("#tooltip-title").text(lookupValue+1880);
 	    d3.select("#tooltip-glob").text(data[lookupValue].Glob);
 	    d3.select("#tooltip-nhem").text(data[lookupValue].NHem);
 	    d3.select("#tooltip-shem").text(data[lookupValue].SHem);
