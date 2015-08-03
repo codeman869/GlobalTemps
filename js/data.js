@@ -2322,7 +2322,7 @@ var hoverLine = d3.svg.line();
 
 
 //generate line data
-var global = d3.svg.line().interpolate("basis").x(function(d){
+var glob = d3.svg.line().interpolate("basis").x(function(d){
 	
 	return xScale(new Date(""+d.Year))+padding;
 	
@@ -2355,7 +2355,7 @@ var sHem = d3.svg.line().interpolate("basis").x(function(d){
 
 
 //draw the paths
-svg.append("path").attr("d",global(data)).attr("stroke","green").attr("width",2).attr("fill","none");
+svg.append("path").attr("d",glob(data)).attr("stroke","green").attr("width",2).attr("fill","none");
 svg.append("path").attr("d",nHem(data)).attr("stroke","red").attr("width",2).attr("fill","none");
 svg.append("path").attr("d",sHem(data)).attr("stroke","blue").attr("width",2).attr("fill","none");
 
