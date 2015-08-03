@@ -2363,7 +2363,7 @@ svg.on("mousemove",function(){
 	    yPos = d3.mouse(this)[1];
 	lookupValue = xScale.invert(xPos).getFullYear()-1880;
 	
-	if lookupValue >=0 && lookupValue <= 134 {
+	if (lookupValue >=0 && lookupValue <= 134) {
 	    
 	    console.log(lookupValue);
 	}
