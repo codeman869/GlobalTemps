@@ -2361,8 +2361,8 @@ var sHem = d3.svg.line().interpolate("basis").x(function(d){
 
 //draw the paths
 svg.append("path").attr("d",glob(data)).attr("class","global-stroke");
-svg.append("path").attr("d",nHem(data)).attr("stroke","red").attr("width",2).attr("fill","none");
-svg.append("path").attr("d",sHem(data)).attr("stroke","blue").attr("width",2).attr("fill","none");
+svg.append("path").attr("d",nHem(data)).attr("class","northern-stroke");
+svg.append("path").attr("d",sHem(data)).attr("class","southern-stroke");
 
 svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black").attr("width",2).attr("fill","none").attr("id","vertLine");
 
