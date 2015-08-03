@@ -2360,12 +2360,15 @@ svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black")
 svg.on("mousemove",function(){
 	
 	var xPos = d3.mouse(this)[0],
-	    yPos = d3.mouse(this)[1];
+	    yPos = d3.mouse(this)[1],
+	    dX = 10,
+	    dY = 10;
 	lookupValue = xScale.invert(xPos-padding).getFullYear()-1880;
 	
 	if (lookupValue >=0 && lookupValue <= 134) {
 	    
-	    console.log(lookupValue);
+	    //console.log(lookupValue);
+	    d3.select("#tooltip").style("left", xPos + dX+"px").style("top",yPos + dX+"px");
 	    d3.select("#tooltip-title").text(lookupValue+1880);
 	    d3.select("#tooltip-glob").text(data[lookupValue].Glob);
 	    d3.select("#tooltip-nhem").text(data[lookupValue].NHem);
