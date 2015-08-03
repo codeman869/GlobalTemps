@@ -2309,7 +2309,7 @@ svg.attr("height",height+2*padding).attr("width",width+2*padding);
 
 //Add a title
 svg.append("text").attr("x",width/2).attr("y",40).attr("class","title-text")
-			.text("Global Temperature deviations from 1880 - 2014");
+			.text("Global Temperature Deviations from 1880 - 2014");
 
 
 //add x and y axis
