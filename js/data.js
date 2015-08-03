@@ -2361,7 +2361,7 @@ svg.on("mousemove",function(){
 	
 	var xPos = d3.mouse(this)[0],
 	    yPos = d3.mouse(this)[1];
-	lookupValue = xScale.invert(xPos).getFullYear()-1880;
+	lookupValue = xScale.invert(xPos+padding).getFullYear()-1880;
 	
 	if (lookupValue >=0 && lookupValue <= 134) {
 	    
