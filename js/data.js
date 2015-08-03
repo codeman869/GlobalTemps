@@ -2361,7 +2361,13 @@ svg.on("mousemove",function(){
 	
 	var xPos = d3.mouse(this)[0],
 	    yPos = d3.mouse(this)[1];
-	console.log(xScale.invert(xPos).getFullYear()-1880);
+	lookupValue = xScale.invert(xPos).getFullYear()-1880;
+	
+	if lookupValue >=0 && lookupValue <= 134 {
+	    
+	    console.log(lookupValue);
+	}
+	
 	
 	d3.select("#vertLine").attr("transform",function(){
 		
