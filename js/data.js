@@ -2293,5 +2293,97 @@ var data = [{
         "64S-44S": 23,
         "90S-64S": 47
     }];
+    
+    
+//initial variables
+var width = 1500, height = 900, padding = 20;
+var xScale = d3.time.scale().domain([new Date("1880"),new Date("2014")]).range([0,width-padding* 2]);
+var yScale = d3.scale.linear().domain([100,-100]).range([0,height-padding * 2]);
+var xAxis = d3.svg.axis().scale(xScale);
+var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-var xScale = d3.scale.linear().range([d3.min(data.Year),d3.max(data.Year)]);
+//create main SVG
+svg = d3.select("body").append("svg");
+svg.attr("height",height+padding).attr("width",width+padding);
+
+//add x and y axis
+svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+height/2+")").call(xAxis);
+svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+","+padding+")").call(yAxis);
+
+//helper functions
+var bisectDate = d3.bisector(function(d){
+	
+	return new Date(""+d.Year);
+	
+}).left;
+
+//hovering Line
+var hoverLine = d3.svg.line();
+
+
+//generate line data
+var global = d3.svg.line().interpolate("basis").x(function(d){
+	
+	return xScale(new Date(""+d.Year))+padding;
+	
+}).y(function(d){
+	
+	return yScale(d.Glob);
+	
+});
+
+var nHem = d3.svg.line().interpolate("basis").x(function(d){
+	
+	return xScale(new Date(""+d.Year))+padding;
+	
+}).y(function(d){
+	
+	return yScale(d.NHem);
+	
+});
+
+var sHem = d3.svg.line().interpolate("basis").x(function(d){
+	
+	return xScale(new Date(""+d.Year))+padding;
+	
+}).y(function(d){
+	
+	return yScale(d.SHem);
+	
+});
+
+
+
+//draw the paths
+svg.append("path").attr("d",global(data)).attr("stroke","green").attr("width",2).attr("fill","none");
+svg.append("path").attr("d",nHem(data)).attr("stroke","red").attr("width",2).attr("fill","none");
+svg.append("path").attr("d",sHem(data)).attr("stroke","blue").attr("width",2).attr("fill","none");
+
+svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black").attr("width",2).attr("fill","none").attr("id","vertLine");
+
+svg.on("mousemove",function(){
+	
+	var xPos = d3.mouse(this)[0];
+	
+	d3.select("#vertLine").attr("transform",function(){
+		
+		return "translate(" + xPos + ",0)";
+		
+	});
+	
+	
+});
+
+
+d3.select(".legend").style("left", width - 100 - padding + "px")
+				.style("top", height - 150 - padding + "px");
+	
+			d3.select("#glob").text("Global Temperature")
+				.style("color", "green");
+			d3.select("#nhem").text("Northern Hemisphere")
+				.style("color", "red");
+			d3.select("#shem").text("Southern Hemisphere")
+				.style("color", "blue");
+
+
+
