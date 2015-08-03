@@ -2296,21 +2296,11 @@ var data = [{
     
     
 //initial variables
-
 var width = 1500, height = 900, padding = 20, dX=30, dY=30;
 var xScale = d3.time.scale().domain([new Date("1880"),new Date("2014")]).range([0,width-padding* 2]);
 var yScale = d3.scale.linear().domain([100,-100]).range([0,height-padding * 2]);
 var xAxis = d3.svg.axis().scale(xScale);
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
-
-
-//create main SVG
-svg = d3.select("body").append("svg");
-svg.attr("height",height+padding).attr("width",width+padding);
-
-//add x and y axis
-svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+height/2+")").call(xAxis);
-svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+","+padding+")").call(yAxis);
 
 
 //create main SVG
@@ -2330,7 +2320,7 @@ svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+"
 svg.append("text").attr("x",width-padding).attr("y",(height+padding)/2).attr("class","x-axis-label")
 			.text("Dates");
 svg.append("text").attr("x",padding).attr("y",height).attr("class","x-axis-label y-axis-label")
-			.text("Temperature Deviations (0.01 degrees C)");
+			.text("Temperature Deviations");
 
 //hovering Line
 var hoverLine = d3.svg.line();
@@ -2338,7 +2328,6 @@ var hoverLine = d3.svg.line();
 
 //generate line data
 var glob = d3.svg.line().interpolate("basis").x(function(d){
-
 	
 	return xScale(new Date(""+d.Year))+padding;
 	
@@ -2375,7 +2364,6 @@ svg.append("path").attr("d",glob(data)).attr("class","global-stroke");
 svg.append("path").attr("d",nHem(data)).attr("class","northern-stroke");
 svg.append("path").attr("d",sHem(data)).attr("class","southern-stroke");
 
-
 svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black").attr("width",2).attr("fill","none").attr("id","vertLine");
 
 svg.on("mousemove",function(){
@@ -2395,7 +2383,7 @@ svg.on("mousemove",function(){
 	    
 	}
 	
-
+	
 	d3.select("#vertLine").attr("transform",function(){
 		
 		return "translate(" + xPos + ",0)";
