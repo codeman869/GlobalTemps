@@ -2311,11 +2311,7 @@ svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+h
 svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+","+padding+")").call(yAxis);
 
 //helper functions
-var bisectDate = d3.bisector(function(d){
-	
-	return new Date(""+d.Year);
-	
-}).left;
+
 
 //hovering Line
 var hoverLine = d3.svg.line();
@@ -2363,8 +2359,10 @@ svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black")
 
 svg.on("mousemove",function(){
 	
-	var xPos = d3.mouse(this)[0];
-	console.log(xScale.invert(xPos).getFullYear());
+	var xPos = d3.mouse(this)[0],
+	    yPos = d3.mouse(this)[1];
+	console.log(xScale.invert(xPos).getFullYear()-1880);
+	
 	d3.select("#vertLine").attr("transform",function(){
 		
 		return "translate(" + xPos + ",0)";
