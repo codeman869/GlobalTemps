@@ -2296,11 +2296,12 @@ var data = [{
     
     
 //initial variables
-var width = 1500, height = 900, padding = 20;
+var width = 1500, height = 900, padding = 20, dX=20, dY=20;
 var xScale = d3.time.scale().domain([new Date("1880"),new Date("2014")]).range([0,width-padding* 2]);
 var yScale = d3.scale.linear().domain([100,-100]).range([0,height-padding * 2]);
 var xAxis = d3.svg.axis().scale(xScale);
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
 
 //create main SVG
 svg = d3.select("body").append("svg");
@@ -2360,9 +2361,7 @@ svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black")
 svg.on("mousemove",function(){
 	
 	var xPos = d3.mouse(this)[0],
-	    yPos = d3.mouse(this)[1],
-	    dX = 10,
-	    dY = 10;
+	    yPos = d3.mouse(this)[1];
 	lookupValue = xScale.invert(xPos-padding).getFullYear()-1880;
 	
 	if (lookupValue >=0 && lookupValue <= 134) {
