@@ -2367,6 +2367,8 @@ svg.on("mousemove",function(){
 	    
 	    //console.log(lookupValue);
 	    d3.select("#tooltip-glob").text(data[lookupValue].Glob);
+	    d3.select("#tooltip-nhem").text(data[lookupValue].NHem);
+	    d3.select("#tooltip-shem").text(data[lookupValue].SHem);
 	    
 	}
 	
