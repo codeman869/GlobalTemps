@@ -71,3 +71,12 @@ div.legend {
 				fill: #000;
 				pointer-event:none;
 }
+
+.x-axis-label {
+    
+    text-anchor:right;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				fill: #000;
+				pointer-event:none;
+}

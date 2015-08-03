@@ -2316,7 +2316,10 @@ svg.append("text").attr("x",width/2).attr("y",40).attr("class","title-text")
 svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+(height-2*padding)/2+")").call(xAxis);
 svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+",0)").call(yAxis);
 
-//helper functions
+//Axis Labeling
+svg.append("text").attr("x",width-padding).attr("y",(height-2*padding)/2).attr("class","x-axis-label")
+			.text("Dates");
+
 
 
 //hovering Line
