@@ -2296,11 +2296,13 @@ var data = [{
     
     
 //initial variables
-var width = 1500, height = 900, padding = 20;
+
+var width = 1500, height = 900, padding = 20, dX=30, dY=30;
 var xScale = d3.time.scale().domain([new Date("1880"),new Date("2014")]).range([0,width-padding* 2]);
 var yScale = d3.scale.linear().domain([100,-100]).range([0,height-padding * 2]);
 var xAxis = d3.svg.axis().scale(xScale);
 var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
 
 //create main SVG
 svg = d3.select("body").append("svg");
@@ -2310,19 +2312,33 @@ svg.attr("height",height+padding).attr("width",width+padding);
 svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+height/2+")").call(xAxis);
 svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+","+padding+")").call(yAxis);
 
-//helper functions
-var bisectDate = d3.bisector(function(d){
-	
-	return new Date(""+d.Year);
-	
-}).left;
+
+//create main SVG
+svg = d3.select("body").append("svg");
+svg.attr("height",height+2*padding).attr("width",width+2*padding);
+
+//Add a title
+svg.append("text").attr("x",width/2).attr("y",40).attr("class","title-text")
+			.text("Global Temperature Deviations from 1880 - 2014");
+
+
+//add x and y axis
+svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+(height-2*padding)/2+")").call(xAxis);
+svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+",0)").call(yAxis);
+
+//Axis Labeling
+svg.append("text").attr("x",width-padding).attr("y",(height+padding)/2).attr("class","x-axis-label")
+			.text("Dates");
+svg.append("text").attr("x",padding).attr("y",height).attr("class","x-axis-label y-axis-label")
+			.text("Temperature Deviations");
 
 //hovering Line
 var hoverLine = d3.svg.line();
 
 
 //generate line data
-var global = d3.svg.line().interpolate("basis").x(function(d){
+var glob = d3.svg.line().interpolate("basis").x(function(d){
+
 	
 	return xScale(new Date(""+d.Year))+padding;
 	
@@ -2355,16 +2371,31 @@ var sHem = d3.svg.line().interpolate("basis").x(function(d){
 
 
 //draw the paths
-svg.append("path").attr("d",global(data)).attr("stroke","green").attr("width",2).attr("fill","none");
-svg.append("path").attr("d",nHem(data)).attr("stroke","red").attr("width",2).attr("fill","none");
-svg.append("path").attr("d",sHem(data)).attr("stroke","blue").attr("width",2).attr("fill","none");
+svg.append("path").attr("d",glob(data)).attr("class","global-stroke");
+svg.append("path").attr("d",nHem(data)).attr("class","northern-stroke");
+svg.append("path").attr("d",sHem(data)).attr("class","southern-stroke");
+
 
 svg.append("line").attr({"x1":0,"y1":0,"x2":0,y2:height}).attr("stroke","black").attr("width",2).attr("fill","none").attr("id","vertLine");
 
 svg.on("mousemove",function(){
 	
-	var xPos = d3.mouse(this)[0];
+	var xPos = d3.mouse(this)[0],
+	    yPos = d3.mouse(this)[1];
+	lookupValue = xScale.invert(xPos-padding).getFullYear()-1880;
 	
+	if (lookupValue >=0 && lookupValue <= 134) {
+	    
+	    //console.log(lookupValue);
+	    d3.select("#tooltip").style("left", xPos + dX+"px").style("top",yPos + dX+"px");
+	    d3.select("#tooltip-title").text(lookupValue+1880);
+	    d3.select("#tooltip-glob").text(data[lookupValue].Glob);
+	    d3.select("#tooltip-nhem").text(data[lookupValue].NHem);
+	    d3.select("#tooltip-shem").text(data[lookupValue].SHem);
+	    
+	}
+	
+
 	d3.select("#vertLine").attr("transform",function(){
 		
 		return "translate(" + xPos + ",0)";
@@ -2379,11 +2410,13 @@ d3.select(".legend").style("left", width - 100 - padding + "px")
 				.style("top", height - 150 - padding + "px");
 	
 			d3.select("#glob").text("Global Temperature")
-				.style("color", "green");
+				.attr("class", "global-text");
 			d3.select("#nhem").text("Northern Hemisphere")
-				.style("color", "red");
+				.attr("class", "northern-text");
 			d3.select("#shem").text("Southern Hemisphere")
-				.style("color", "blue");
+				.attr("class", "southern-text");
 
+
+d3.select("#tooltip").classed("hidden",false);
 
 
