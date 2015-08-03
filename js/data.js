@@ -2307,6 +2307,11 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left");
 svg = d3.select("body").append("svg");
 svg.attr("height",height+2*padding).attr("width",width+2*padding);
 
+//Add a title
+svg.append("text").attr("x",width/2).attr("y",40).attr("class","title-text")
+			.text("Global Temperature deviations from 1880 - 2014");
+
+
 //add x and y axis
 svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+(height-2*padding)/2+")").call(xAxis);
 svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+",0)").call(yAxis);
