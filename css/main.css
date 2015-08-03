@@ -80,3 +80,21 @@ div.legend {
 				fill: #000;
 				pointer-event:none;
 }
+
+.global-stroke {
+    
+    stroke: #1b9e77;
+    fill: none;
+    stroke-width: 2;
+    
+}
+
+.northern-stroke {
+    
+    
+}
+
+.southern-stroke {
+    
+    
+}
