@@ -2305,10 +2305,10 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 //create main SVG
 svg = d3.select("body").append("svg");
-svg.attr("height",height+padding).attr("width",width+padding);
+svg.attr("height",height+2*padding).attr("width",width+2*padding);
 
 //add x and y axis
-svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+height/2+")").call(xAxis);
+svg.append("g").attr("class","axis").attr("transform","translate("+padding+","+(height-2*padding)/2+")").call(xAxis);
 svg.append("g").attr("class","axis").attr("transform","translate("+2 * padding+","+padding+")").call(yAxis);
 
 //helper functions
